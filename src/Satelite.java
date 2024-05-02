@@ -54,4 +54,5 @@ public abstract class Satelite implements Datos{
                 ", expectativa vida = " + expectativaVida +
                 '}';
     }
+
 }

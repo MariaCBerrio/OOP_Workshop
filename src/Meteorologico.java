@@ -1,9 +1,9 @@
-public class SateliteMeteorologico extends Satelite{
+public class Meteorologico extends Satelite{
 
     protected InfoMeteorologica[] infoMeteorologicas;
     protected int contadorInfo;
 
-    public SateliteMeteorologico(String tipo, String ubicacionOrbita, String trayectoria, String cantidadDatos, String tipoDatos, int expectativaVida, String infMeteorologica) {
+    public Meteorologico(String tipo, String ubicacionOrbita, String trayectoria, String cantidadDatos, String tipoDatos, int expectativaVida, String infMeteorologica) {
         super(tipo, ubicacionOrbita, trayectoria, cantidadDatos, tipoDatos, expectativaVida, infMeteorologica);
         this.infoMeteorologicas = new InfoMeteorologica[3];
         this.contadorInfo = 0;
