@@ -19,65 +19,86 @@ public class Comunicacion extends Satelite{
         if (this.contadorComunicacion < this.infoComunicacion.length) {
             this.infoComunicacion[this.contadorComunicacion] = infoComunicacion;
             this.contadorComunicacion ++;
-            transmitirDatos();
         }
-        System.out.println("La capacidad de información del satélite está al límite");
     }
 
-    public void comunicacionesEspaciales(){
+    public void comunicacionesEspaciales() {
         int radiacionEspacial = 0;
         int anchoDeBanda = 0;
         String prediccion;
         Scanner scanner = new Scanner(System.in);
 
-        if (this.contadorComunicacion == this.infoComunicacion.length){
+        if (this.contadorComunicacion == this.infoComunicacion.length) {
             for (int i = 0; i < this.infoComunicacion.length; i++) {
                 radiacionEspacial += this.infoComunicacion[i].radEspacial;
                 anchoDeBanda += this.infoComunicacion[i].anchoBanda;
             }
+            radiacionEspacial /= infoComunicacion.length;
+            anchoDeBanda /= infoComunicacion.length;
 
-            radiacionEspacial/=infoComunicacion.length;
-            anchoDeBanda/= infoComunicacion.length;
+            System.out.println("El satélite de comunicaciones ha recolectado los siguientes datos:");
+            for (int i = 0; i < this.infoComunicacion.length; i++) {
+                System.out.println("Información " + (i + 1) + ": " + this.infoComunicacion[i].toString());
+            }
 
-            System.out.println("Ingrese el valor de la radiación actual: ");
+            System.out.println("\n A continuación, conozca un promedio de los datos recolectados:");
+            prediccion = "Radiación espacial: " + radiacionEspacial + "°\n" +
+                    "Ancho de banda: " + anchoDeBanda + " MB\n";
+            System.out.println(prediccion);
+
+            System.out.println("-------------------------------------------------------------");
+            System.out.println("Ahora, ingrese algunos valores para conocer su clasificación.");
+            System.out.println("Ingrese el valor de la radiación actual:");
             int radActual = scanner.nextInt();
 
-            String categoria = "";
-            if (radActual >= 1 && radActual <= 2) {
-                categoria = "BAJA";
-            } else if (radActual >= 3 && radActual <= 5) {
-                categoria = "MODERADA";
-            } else if (radActual >= 6 && radActual <= 7) {
-                categoria = "ALTA";
-            } else if (radActual >= 8 && radActual <= 10) {
-                categoria = "MUY ALTA";
-            } else if (radActual >= 11) {
-                categoria = "EXTREMADAMENTE ALTA";
-            }
-
-            System.out.println("Ingrese el valor del ancho de banda actual en Megabytes: ");
-            int anchoBanda = scanner.nextInt();
+            String categoria = calcularCategoriaRadiacion(radActual);
 
             String categoriaAnchoBanda = "";
-            if (anchoBanda >= 1 && anchoBanda <= 10) {
-                categoriaAnchoBanda = "BAJA";
-            } else if (anchoBanda > 10 && anchoBanda <= 50) {
-                categoriaAnchoBanda = "MODERADA";
-            } else if (anchoBanda > 50 && anchoBanda <= 100) {
-                categoriaAnchoBanda = "ALTA";
-            } else if (anchoBanda > 1000) {
-                categoriaAnchoBanda = "MUY ALTA";
-            } else {
-                categoriaAnchoBanda = "VALOR NO VÁLIDO";
-            }
+            boolean comproDoWhile;
+            do {
+                System.out.println("Ingrese el valor del ancho de banda actual en Megabytes:");
+                int anchoBandaActual = scanner.nextInt();
+                categoriaAnchoBanda = calcularCategoriaAnchoBanda(anchoBandaActual);
+                comproDoWhile = !categoriaAnchoBanda.equals("VALOR NO VÁLIDO");
+                if (!comproDoWhile) {
+                    System.out.println("Valor de ancho de banda no válido. Intente nuevamente.");
+                }
+            } while (!comproDoWhile);
 
-            prediccion = "Según el promedio de datos históricos del satélite de comunicaciones, " +
-                    "es posible predecir los siguientes datos para el día de hoy:\n" +
-                    "Radiación espacial: " + radiacionEspacial + "°\n" +
-                    "Ancho de banda: " + anchoDeBanda + "\n" +
-                    "Categoría de radiación actual: " + categoria + "\n" +
+            prediccion = "Categoría de radiación actual: " + categoria + "\n" +
                     "Categoría de ancho de banda actual: " + categoriaAnchoBanda;
             System.out.println(prediccion);
         }
     }
+
+    private String calcularCategoriaRadiacion(int radActual) {
+        String categoria;
+        if (radActual >= 1 && radActual <= 2) {
+            categoria = "BAJA";
+        } else if (radActual >= 3 && radActual <= 5) {
+            categoria = "MODERADA";
+        } else if (radActual >= 6 && radActual <= 7) {
+            categoria = "ALTA";
+        } else if (radActual >= 8 && radActual <= 10) {
+            categoria = "MUY ALTA";
+        } else {
+            categoria = "EXTREMADAMENTE ALTA";
+        }
+        return categoria;
+    }
+
+    private String calcularCategoriaAnchoBanda(int anchoBandaActual) {
+        if (anchoBandaActual >= 1 && anchoBandaActual <= 10) {
+            return "BAJA";
+        } else if (anchoBandaActual > 10 && anchoBandaActual <= 50) {
+            return "MODERADA";
+        } else if (anchoBandaActual > 50 && anchoBandaActual <= 100) {
+            return "ALTA";
+        } else if (anchoBandaActual > 1000) {
+            return "MUY ALTA";
+        } else {
+            return "VALOR NO VÁLIDO";
+        }
+    }
+
 }

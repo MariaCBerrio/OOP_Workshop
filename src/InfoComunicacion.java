@@ -7,4 +7,12 @@ public class InfoComunicacion {
         this.anchoBanda = anchoBanda;
         this.radEspacial = radEspacial;
     }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "Radiación espacial = " + radEspacial +
+                ", ancho de banda = " + anchoBanda +
+                '}';
+    }
 }

@@ -13,9 +13,7 @@ public class Meteorologico extends Satelite{
         if (this.contadorInfo < this.infoMeteorologicas.length) {
             this.infoMeteorologicas[this.contadorInfo] = infoMeteorologica;
             this.contadorInfo ++;
-            transmitirDatos();
         }
-        System.out.println("La capacidad de información del satélite está al límite");
     }
     public void predecirClima(){
         float promedioTemperatura, promedioHumedad, promedioPrecipitacion;
@@ -23,7 +21,7 @@ public class Meteorologico extends Satelite{
         promedioTemperatura = 0;
         promedioHumedad = 0;
         promedioPrecipitacion = 0;
-        if (this.contadorInfo == this.infoMeteorologicas.length - 1) {
+        if (this.contadorInfo == this.infoMeteorologicas.length) {
             for (int i = 0; i < this.infoMeteorologicas.length; i++) {
                 promedioTemperatura += this.infoMeteorologicas[i].temperatura;
                 promedioHumedad += this.infoMeteorologicas[i].humedad;
@@ -34,10 +32,10 @@ public class Meteorologico extends Satelite{
             promedioPrecipitacion /= infoMeteorologicas.length;
 
             prediccion = "Según el promedio de datos históricos del satélite meteorológico, " +
-                         "es posible predecir los siguientes datos para el día de hoy:" +
-                         "Temperatura: " + Math.round(promedioTemperatura) + "°" +
-                         "Humedad: " + Math.round(promedioHumedad) + "%" +
-                         "Precipitación: " + Math.round(promedioPrecipitacion)+ "%";
+                         "es posible predecir los siguientes datos para el día de hoy: \n" +
+                         "Temperatura: " + Math.round(promedioTemperatura) + "°\n" +
+                         "Humedad: " + Math.round(promedioHumedad) + "%\n" +
+                         "Precipitación: " + Math.round(promedioPrecipitacion)+ "%\n";
             System.out.println(prediccion);
         }
     }

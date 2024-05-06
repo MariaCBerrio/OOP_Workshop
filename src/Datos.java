@@ -1,5 +1,6 @@
 public interface Datos {
 
     public void transmitirDatos();
-    public void generarInforme();
+    public void agregarInfo();
+    public void calcularVidaUtil(int expectativaVida);
 }

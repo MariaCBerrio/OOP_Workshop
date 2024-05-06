@@ -1,12 +1,11 @@
 public class InfoNavegacion {
+    protected double latitud, longitud, altitud;
+    protected String nombreUbicacion;
 
-    protected float geometria;
-    protected boolean ionosferaTroposfera, multipath;
-
-    public InfoNavegacion(float geometria,boolean ionosferaTroposfera, boolean multipath) {
-        this.geometria = geometria; //entre mas separados los satelites mejor senal
-        this.multipath = multipath; //objetos reflectantes
-        this.ionosferaTroposfera = ionosferaTroposfera; //se debilitan en estas
+    public InfoNavegacion(String nombreUbicacion, double latitud, double longitud, double altitud ) {
+        this.nombreUbicacion = nombreUbicacion;
+        this.altitud = altitud;
+        this.longitud = longitud;
+        this.latitud = latitud;
     }
 }
-
