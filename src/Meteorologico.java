@@ -3,8 +3,8 @@ public class Meteorologico extends Satelite{
     protected InfoMeteorologica[] infoMeteorologicas;
     protected int contadorInfo;
 
-    public Meteorologico(String tipo, String ubicacionOrbita, String trayectoria, String cantidadDatos, String tipoDatos, int expectativaVida, String infMeteorologica) {
-        super(tipo, ubicacionOrbita, trayectoria, cantidadDatos, tipoDatos, expectativaVida, infMeteorologica);
+    public Meteorologico(String tipo, String ubicacionOrbita, String trayectoria, String tipoDatos, int expectativaVida) {
+        super(tipo, ubicacionOrbita, trayectoria, tipoDatos, expectativaVida);
         this.infoMeteorologicas = new InfoMeteorologica[3];
         this.contadorInfo = 0;
     }
@@ -15,7 +15,7 @@ public class Meteorologico extends Satelite{
             this.contadorInfo ++;
             transmitirDatos();
         }
-        System.out.println("La capacidad de información del sátelite está al límite");
+        System.out.println("La capacidad de información del satélite está al límite");
     }
     public void predecirClima(){
         float promedioTemperatura, promedioHumedad, promedioPrecipitacion;

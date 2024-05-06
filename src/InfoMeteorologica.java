@@ -11,4 +11,19 @@ public class InfoMeteorologica {
         this.nubosidad = nubosidad;
     }
 
+    public float getCoordenadas() {
+        return coordenadas;
+    }
+    public float getTemperatura() {
+        return temperatura;
+    }
+    public float getHumedad() {
+        return humedad;
+    }
+    public float getPrecipitacion() {
+        return precipitacion;
+    }
+    public String getNubosidad() {
+        return nubosidad;
+    }
 }

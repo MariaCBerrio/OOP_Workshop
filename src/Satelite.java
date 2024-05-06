@@ -3,17 +3,15 @@ import java.util.Scanner;
 public abstract class Satelite implements Datos{
 
 //    Atributos
-    protected String tipo, ubicacionOrbita, trayectoria, cantidadDatos, tipoDatos, infMeteorologica;
+    protected String tipo, ubicacionOrbita, trayectoria, tipoDatos;
     protected int expectativaVida;
 //    Constructor
-    public Satelite(String tipo, String ubicacionOrbita, String trayectoria, String cantidadDatos, String tipoDatos, int expectativaVida, String infMeteorologica) {
+    public Satelite(String tipo, String ubicacionOrbita, String trayectoria,  String tipoDatos, int expectativaVida) {
         this.tipo = tipo;
         this.ubicacionOrbita = ubicacionOrbita;
         this.trayectoria = trayectoria;
-        this.cantidadDatos = cantidadDatos;
         this.tipoDatos = tipoDatos;
         this.expectativaVida = expectativaVida;
-        this.infMeteorologica = infMeteorologica;
     }
 
 //    Métodos
@@ -48,9 +46,7 @@ public abstract class Satelite implements Datos{
                 "Tipo = " + tipo  +
                 ", ubicación de la órbita = " + ubicacionOrbita  +
                 ", trayectoria = " + trayectoria  +
-                ", cantidad de datos = " + cantidadDatos  +
                 ", tipo de datos = " + tipoDatos +
-                ", influencia meteorológica = " + infMeteorologica  +
                 ", expectativa vida = " + expectativaVida +
                 '}';
     }
